@@ -340,12 +340,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Carrousel services mobile avec effet 3D
+    // Carrousel services mobile avec effet 3D - Version optimisée
     function initServicesCarousel() {
         if (window.innerWidth <= 768) {
             const servicesGrid = document.querySelector('.services-grid');
             const serviceCards = document.querySelectorAll('.service-card');
-            const servicesSection = document.querySelector('.services');
 
             if (servicesGrid && serviceCards.length > 0) {
                 // Créer les indicateurs
@@ -354,54 +353,49 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Initialiser le premier service comme actif
                 updateActiveService(0);
 
-                // Observer scroll pour mettre à jour le service actif
+                // Throttled scroll handler pour de meilleures performances
+                let scrollTimeout;
                 servicesGrid.addEventListener('scroll', () => {
-                    const scrollLeft = servicesGrid.scrollLeft;
-                    const cardWidth = serviceCards[0].offsetWidth + 16; // largeur + gap
-                    const activeIndex = Math.round(scrollLeft / cardWidth);
-                    updateActiveService(activeIndex);
+                    if (scrollTimeout) {
+                        clearTimeout(scrollTimeout);
+                    }
+
+                    scrollTimeout = setTimeout(() => {
+                        const scrollLeft = servicesGrid.scrollLeft;
+                        const cardWidth = 296; // 280px + 16px gap
+                        const activeIndex = Math.round(scrollLeft / cardWidth);
+                        updateActiveService(activeIndex);
+                    }, 50);
                 });
 
-                // Support touch pour améliorer le swipe
-                let startX = 0;
-                let scrollLeft = 0;
-
-                servicesGrid.addEventListener('touchstart', (e) => {
-                    startX = e.touches[0].pageX - servicesGrid.offsetLeft;
-                    scrollLeft = servicesGrid.scrollLeft;
-                });
-
-                servicesGrid.addEventListener('touchmove', (e) => {
-                    e.preventDefault();
-                    const x = e.touches[0].pageX - servicesGrid.offsetLeft;
-                    const walk = (x - startX) * 2;
-                    servicesGrid.scrollLeft = scrollLeft - walk;
-                });
-
-                // Clic sur indicateurs
-                const indicators = document.querySelectorAll('.service-indicator');
-                indicators.forEach((indicator, index) => {
-                    indicator.addEventListener('click', () => {
-                        const cardWidth = serviceCards[0].offsetWidth + 16;
-                        servicesGrid.scrollTo({
-                            left: index * cardWidth,
-                            behavior: 'smooth'
+                // Clic sur indicateurs avec navigation fluide
+                setTimeout(() => {
+                    const indicators = document.querySelectorAll('.service-indicator');
+                    indicators.forEach((indicator, index) => {
+                        indicator.addEventListener('click', () => {
+                            const cardWidth = 296;
+                            servicesGrid.scrollTo({
+                                left: index * cardWidth,
+                                behavior: 'smooth'
+                            });
                         });
                     });
-                });
+                }, 100);
             }
         }
     }
 
     function createServiceIndicators(count) {
         const servicesSection = document.querySelector('.services .container');
-        let indicatorsContainer = document.querySelector('.services-indicators');
 
-        if (indicatorsContainer) {
-            indicatorsContainer.remove();
+        // Supprimer les anciens indicateurs
+        const existingIndicators = servicesSection.querySelector('.services-indicators');
+        if (existingIndicators) {
+            existingIndicators.remove();
         }
 
-        indicatorsContainer = document.createElement('div');
+        // Créer nouveaux indicateurs
+        const indicatorsContainer = document.createElement('div');
         indicatorsContainer.className = 'services-indicators';
 
         for (let i = 0; i < count; i++) {
@@ -415,27 +409,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateActiveService(activeIndex) {
+        // Limiter l'index aux bornes valides
         const serviceCards = document.querySelectorAll('.service-card');
-        const indicators = document.querySelectorAll('.service-indicator');
+        const maxIndex = serviceCards.length - 1;
+        activeIndex = Math.max(0, Math.min(activeIndex, maxIndex));
 
-        // Mise à jour des cartes
-        serviceCards.forEach((card, index) => {
-            card.classList.remove('active', 'adjacent');
+        // Mise à jour des cartes avec RequestAnimationFrame pour fluidité
+        requestAnimationFrame(() => {
+            serviceCards.forEach((card, index) => {
+                card.classList.remove('active', 'adjacent');
 
-            if (index === activeIndex) {
-                card.classList.add('active');
-            } else if (Math.abs(index - activeIndex) === 1) {
-                card.classList.add('adjacent');
-            }
-        });
+                if (index === activeIndex) {
+                    card.classList.add('active');
+                } else if (Math.abs(index - activeIndex) === 1) {
+                    card.classList.add('adjacent');
+                }
+            });
 
-        // Mise à jour des indicateurs
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === activeIndex);
+            // Mise à jour des indicateurs
+            const indicators = document.querySelectorAll('.service-indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === activeIndex);
+            });
         });
     }
 
-    // Initialiser le carrousel au chargement et redimensionnement
+    // Initialiser avec debounce
+    let resizeTimeout;
+    function initCarouselWithDebounce() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(initServicesCarousel, 150);
+    }
+
+    // Initialisation
     initServicesCarousel();
-    window.addEventListener('resize', initServicesCarousel);
+    window.addEventListener('resize', initCarouselWithDebounce);
 });
