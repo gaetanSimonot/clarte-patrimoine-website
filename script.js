@@ -339,4 +339,103 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.style.pointerEvents = 'auto';
         }
     }
+
+    // Carrousel services mobile avec effet 3D
+    function initServicesCarousel() {
+        if (window.innerWidth <= 768) {
+            const servicesGrid = document.querySelector('.services-grid');
+            const serviceCards = document.querySelectorAll('.service-card');
+            const servicesSection = document.querySelector('.services');
+
+            if (servicesGrid && serviceCards.length > 0) {
+                // Créer les indicateurs
+                createServiceIndicators(serviceCards.length);
+
+                // Initialiser le premier service comme actif
+                updateActiveService(0);
+
+                // Observer scroll pour mettre à jour le service actif
+                servicesGrid.addEventListener('scroll', () => {
+                    const scrollLeft = servicesGrid.scrollLeft;
+                    const cardWidth = serviceCards[0].offsetWidth + 16; // largeur + gap
+                    const activeIndex = Math.round(scrollLeft / cardWidth);
+                    updateActiveService(activeIndex);
+                });
+
+                // Support touch pour améliorer le swipe
+                let startX = 0;
+                let scrollLeft = 0;
+
+                servicesGrid.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].pageX - servicesGrid.offsetLeft;
+                    scrollLeft = servicesGrid.scrollLeft;
+                });
+
+                servicesGrid.addEventListener('touchmove', (e) => {
+                    e.preventDefault();
+                    const x = e.touches[0].pageX - servicesGrid.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    servicesGrid.scrollLeft = scrollLeft - walk;
+                });
+
+                // Clic sur indicateurs
+                const indicators = document.querySelectorAll('.service-indicator');
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        const cardWidth = serviceCards[0].offsetWidth + 16;
+                        servicesGrid.scrollTo({
+                            left: index * cardWidth,
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+            }
+        }
+    }
+
+    function createServiceIndicators(count) {
+        const servicesSection = document.querySelector('.services .container');
+        let indicatorsContainer = document.querySelector('.services-indicators');
+
+        if (indicatorsContainer) {
+            indicatorsContainer.remove();
+        }
+
+        indicatorsContainer = document.createElement('div');
+        indicatorsContainer.className = 'services-indicators';
+
+        for (let i = 0; i < count; i++) {
+            const indicator = document.createElement('div');
+            indicator.className = 'service-indicator';
+            if (i === 0) indicator.classList.add('active');
+            indicatorsContainer.appendChild(indicator);
+        }
+
+        servicesSection.appendChild(indicatorsContainer);
+    }
+
+    function updateActiveService(activeIndex) {
+        const serviceCards = document.querySelectorAll('.service-card');
+        const indicators = document.querySelectorAll('.service-indicator');
+
+        // Mise à jour des cartes
+        serviceCards.forEach((card, index) => {
+            card.classList.remove('active', 'adjacent');
+
+            if (index === activeIndex) {
+                card.classList.add('active');
+            } else if (Math.abs(index - activeIndex) === 1) {
+                card.classList.add('adjacent');
+            }
+        });
+
+        // Mise à jour des indicateurs
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === activeIndex);
+        });
+    }
+
+    // Initialiser le carrousel au chargement et redimensionnement
+    initServicesCarousel();
+    window.addEventListener('resize', initServicesCarousel);
 });
