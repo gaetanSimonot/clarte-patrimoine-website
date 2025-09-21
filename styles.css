@@ -1887,6 +1887,13 @@ body {
         gap: 3rem;
     }
 
+    /* Centrer la photo d'Elodie sur tablette */
+    .about-image {
+        float: none;
+        margin: 2rem auto;
+        max-width: 320px;
+    }
+
     .services-grid {
         grid-template-columns: 1fr;
     }
@@ -1897,6 +1904,36 @@ body {
 
     .values-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Trust indicators bien alignés sur tablette */
+    .trust-indicators {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .trust-indicators .trust-item {
+        max-width: 400px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    /* Témoignages en défilement horizontal sur tablette */
+    .testimonials-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1.5rem;
+        padding-bottom: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .testimonial-card {
+        flex: 0 0 280px;
+        scroll-snap-align: start;
+        margin-bottom: 0;
     }
 }
 
@@ -1975,10 +2012,15 @@ body {
 
     .hero-cta .btn {
         width: 100%;
-        max-width: 280px;
+        max-width: 300px;
         justify-content: center;
-        padding: 1rem 2rem;
-        font-size: 0.95rem;
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+        line-height: 1.2;
+        white-space: normal;
+        text-align: center;
+        word-wrap: break-word;
+        min-height: 48px;
     }
 
     .hero-trust {
@@ -2071,6 +2113,38 @@ body {
         font-size: 1rem;
     }
 
+    /* Témoignages en défilement horizontal optimisé pour mobile */
+    .testimonials-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        padding: 0 1rem 1rem 1rem;
+        margin: 0 -1rem 2rem -1rem;
+        scrollbar-width: thin;
+        scrollbar-color: var(--gold-accent) var(--background-secondary);
+    }
+
+    .testimonials-grid::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .testimonials-grid::-webkit-scrollbar-track {
+        background: var(--background-secondary);
+        border-radius: 10px;
+    }
+
+    .testimonials-grid::-webkit-scrollbar-thumb {
+        background: var(--gold-accent);
+        border-radius: 10px;
+    }
+
+    .testimonial-card {
+        flex: 0 0 280px;
+        scroll-snap-align: start;
+        margin-bottom: 0;
+    }
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -2084,6 +2158,23 @@ body {
     .footer-bottom {
         flex-direction: column;
         text-align: center;
+    }
+
+    /* Photo d'Elodie parfaitement centrée sur mobile */
+    .about-image {
+        float: none;
+        margin: 2rem auto 3rem auto;
+        max-width: 280px;
+        display: block;
+    }
+
+    .about-content {
+        text-align: center;
+    }
+
+    .about-text {
+        text-align: left;
+        margin-top: 1rem;
     }
 
     .container {
@@ -2130,8 +2221,18 @@ body {
     }
 
     .hero-cta .btn {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.9rem;
+        padding: 0.875rem 1rem;
+        font-size: 0.85rem;
+        max-width: 280px;
+        line-height: 1.3;
+        white-space: normal;
+        word-wrap: break-word;
+        min-height: 44px;
+    }
+
+    /* Texte alternatif pour les boutons trop longs sur mobile */
+    .hero-cta .btn .btn-text-mobile {
+        display: none;
     }
 
     .container {
@@ -2181,6 +2282,12 @@ body {
     .modal-content {
         margin: 0.75rem;
         width: calc(100% - 1.5rem);
+    }
+
+    /* Photo d'Elodie sur très petits écrans */
+    .about-image {
+        max-width: 240px;
+        margin: 1.5rem auto 2rem auto;
     }
 
     .modal-header,
