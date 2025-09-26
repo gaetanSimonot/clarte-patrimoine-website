@@ -2267,9 +2267,14 @@ body {
         flex: 0 0 320px;
         scroll-snap-align: start;
         margin-bottom: 0;
-        padding: 2rem 1.5rem;
+        padding: 2.5rem 1.5rem 2rem;
         font-size: 0.95rem;
         line-height: 1.5;
+        margin-top: 1rem;
+    }
+
+    .testimonial-quote {
+        top: -10px;
     }
 
     .footer-content {
@@ -2439,7 +2444,12 @@ body {
 
     .testimonial-card {
         flex: 0 0 300px;
-        padding: 1.5rem 1.25rem;
+        padding: 2rem 1.25rem 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .testimonial-quote {
+        top: -10px;
     }
 
     .testimonial-text {
