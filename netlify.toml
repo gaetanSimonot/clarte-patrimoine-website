@@ -1,0 +1,11 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/merci"
+  to = "/merci.html"
+  status = 200
+
+# Configuration pour les formulaires Netlify
+[context.production.environment]
+  NETLIFY_FORM_NOTIFICATIONS = "gaetan.simonot@gmail.com"

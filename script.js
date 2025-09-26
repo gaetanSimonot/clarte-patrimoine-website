@@ -72,12 +72,33 @@ document.addEventListener('DOMContentLoaded', function() {
         const originalBtnText = submitBtn.textContent;
 
         contactForm.addEventListener('submit', function(e) {
-            // Show loading state but allow form to submit normally
+            // Basic client-side validation
+            const formData = new FormData(this);
+            const prenom = formData.get('prenom')?.trim();
+            const nom = formData.get('nom')?.trim();
+            const email = formData.get('email')?.trim();
+            const sujet = formData.get('sujet');
+            const message = formData.get('message')?.trim();
+
+            // Check required fields
+            if (!prenom || !nom || !email || !sujet || !message) {
+                e.preventDefault();
+                alert('Veuillez remplir tous les champs obligatoires.');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                e.preventDefault();
+                alert('Veuillez entrer une adresse email valide.');
+                return;
+            }
+
+            // Show loading state and let Netlify handle submission
             submitBtn.textContent = 'Envoi en cours...';
             submitBtn.style.opacity = '0.7';
             submitBtn.style.pointerEvents = 'none';
-
-            // Don't prevent default - let FormSubmit.co handle the submission
         });
 
         function resetSubmitButton() {
@@ -261,39 +282,32 @@ document.addEventListener('DOMContentLoaded', function() {
         const originalBtnText = submitBtn.textContent;
 
         contactFormModal.addEventListener('submit', function(e) {
-            // Don't prevent default - let FormSubmit.co handle it
-
-            // Show loading state
-            submitBtn.textContent = 'Envoi en cours...';
-            submitBtn.style.opacity = '0.7';
-            submitBtn.style.pointerEvents = 'none';
-
-            // Get form data
+            // Basic client-side validation
             const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
+            const name = formData.get('name')?.trim();
+            const email = formData.get('email')?.trim();
+            const subject = formData.get('subject');
+            const message = formData.get('message')?.trim();
 
-            // Enhanced form validation
-            if (!data.name.trim() || !data.email.trim() || !data.subject || !data.message.trim()) {
-                showNotification('Veuillez remplir tous les champs obligatoires.', 'error');
-                resetSubmitButton();
+            // Check required fields
+            if (!name || !email || !subject || !message) {
+                e.preventDefault();
+                alert('Veuillez remplir tous les champs obligatoires.');
                 return;
             }
 
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(data.email)) {
-                showNotification('Veuillez entrer une adresse email valide.', 'error');
-                resetSubmitButton();
+            if (!emailRegex.test(email)) {
+                e.preventDefault();
+                alert('Veuillez entrer une adresse email valide.');
                 return;
             }
 
-            // Simulate form submission delay
-            setTimeout(() => {
-                showNotification('Merci pour votre demande ! Nous vous recontacterons bientôt.', 'success');
-                this.reset();
-                resetSubmitButton();
-                setTimeout(closeModal, 2000);
-            }, 1500);
+            // Show loading state and let Netlify handle submission
+            submitBtn.textContent = 'Envoi en cours...';
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.pointerEvents = 'none';
         });
 
         function resetSubmitButton() {

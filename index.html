@@ -576,18 +576,19 @@
                         </div>
                     </div>
 
-                    <form class="contact-form" action="https://formsubmit.co/gaetan.simonot@gmail.com" method="POST">
+                    <form class="contact-form" name="contact-principal" method="POST" data-netlify="true" action="/merci.html">
                         <div class="form-header">
                             <h3>Demander mon Audit</h3>
                             <p>Remplissez ce formulaire et je vous recontacterai rapidement</p>
                         </div>
 
-                        <!-- Hidden fields for email configuration -->
-                        <input type="hidden" name="_subject" value="Nouvelle demande d'audit - Clarté Patrimoine">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://clarte-patrimoine-website.vercel.app/merci.html">
-                        <input type="hidden" name="_autoresponse" value="Merci pour votre demande d'audit ! J'ai bien reçu votre message et vous recontacterai dans les 24-48h pour organiser notre première consultation. Cordialement, Elodie Le Bian - Clarté Patrimoine">
+                        <!-- Hidden fields for Netlify Forms -->
+                        <input type="hidden" name="form-name" value="contact-principal">
                         <input type="hidden" name="source" value="Formulaire principal">
+                        <!-- Netlify honeypot field -->
+                        <div style="display: none;">
+                            <input name="bot-field">
+                        </div>
 
                         <div class="form-row">
                             <div class="form-group">
@@ -716,13 +717,14 @@
             <div class="modal-body">
                 <p class="modal-intro">Découvrez le potentiel d'optimisation de votre patrimoine avec un audit personnalisé sans frais d'honoraires.</p>
 
-                <form class="contact-form-modal" id="contactFormModal" action="https://formsubmit.co/gaetan.simonot@gmail.com" method="POST">
-                    <!-- Hidden fields for email configuration -->
-                    <input type="hidden" name="_subject" value="Nouvelle demande d'audit - Clarté Patrimoine">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://clarte-patrimoine-website.vercel.app/merci.html">
-                    <input type="hidden" name="_autoresponse" value="Merci pour votre demande d'audit ! J'ai bien reçu votre message et vous recontacterai dans les 24-48h pour organiser notre première consultation. Cordialement, Elodie Le Bian - Clarté Patrimoine">
+                <form class="contact-form-modal" id="contactFormModal" name="contact-modal" method="POST" data-netlify="true" action="/merci.html">
+                    <!-- Hidden fields for Netlify Forms -->
+                    <input type="hidden" name="form-name" value="contact-modal">
                     <input type="hidden" name="source" value="Formulaire modal">
+                    <!-- Netlify honeypot field -->
+                    <div style="display: none;">
+                        <input name="bot-field">
+                    </div>
 
                     <div class="form-row">
                         <div class="form-group">
