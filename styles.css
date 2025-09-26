@@ -1117,6 +1117,7 @@ body {
     line-height: 1.6;
     color: var(--text-primary);
     margin-bottom: 2rem;
+    margin-top: 1rem;
     font-style: italic;
 }
 
