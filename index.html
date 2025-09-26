@@ -766,6 +766,28 @@
         </div>
     </div>
 
+    <!-- Hidden forms for Netlify form detection -->
+    <form name="contact-principal" data-netlify="true" style="display: none;">
+        <input name="prenom" type="text">
+        <input name="nom" type="text">
+        <input name="email" type="email">
+        <select name="sujet">
+            <option>Audit de patrimoine</option>
+        </select>
+        <textarea name="message"></textarea>
+        <input name="source" type="hidden">
+    </form>
+
+    <form name="contact-modal" data-netlify="true" style="display: none;">
+        <input name="name" type="text">
+        <input name="email" type="email">
+        <select name="subject">
+            <option>Audit de patrimoine</option>
+        </select>
+        <textarea name="message"></textarea>
+        <input name="source" type="hidden">
+    </form>
+
     <script src="script.js"></script>
 </body>
 </html>
