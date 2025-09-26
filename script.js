@@ -72,38 +72,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const originalBtnText = submitBtn.textContent;
 
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Show loading state
+            // Show loading state but allow form to submit normally
             submitBtn.textContent = 'Envoi en cours...';
             submitBtn.style.opacity = '0.7';
             submitBtn.style.pointerEvents = 'none';
 
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-
-            // Enhanced form validation
-            if (!data.name.trim() || !data.email.trim() || !data.subject || !data.message.trim()) {
-                showNotification('Veuillez remplir tous les champs obligatoires.', 'error');
-                resetSubmitButton();
-                return;
-            }
-
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(data.email)) {
-                showNotification('Veuillez entrer une adresse email valide.', 'error');
-                resetSubmitButton();
-                return;
-            }
-
-            // Simulate form submission delay
-            setTimeout(() => {
-                showNotification('Merci pour votre message ! Nous vous recontacterons bientôt.', 'success');
-                this.reset();
-                resetSubmitButton();
-            }, 1500);
+            // Don't prevent default - let FormSubmit.co handle the submission
         });
 
         function resetSubmitButton() {
@@ -231,18 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Add hover effects for interactive elements
-    const interactiveElements = document.querySelectorAll('.btn, .service-card, .contact-item, .feature');
-
-    interactiveElements.forEach(element => {
-        element.addEventListener('mouseenter', function() {
-            this.style.transform = this.style.transform.replace('scale(1)', 'scale(1.02)') + ' scale(1.02)';
-        });
-
-        element.addEventListener('mouseleave', function() {
-            this.style.transform = this.style.transform.replace('scale(1.02)', 'scale(1)');
-        });
-    });
+    // Hover effects are now handled purely by CSS for better performance
 
     // Simple fade-in for hero title
     const heroTitle = document.querySelector('.hero-title');
@@ -298,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const originalBtnText = submitBtn.textContent;
 
         contactFormModal.addEventListener('submit', function(e) {
-            e.preventDefault();
+            // Don't prevent default - let FormSubmit.co handle it
 
             // Show loading state
             submitBtn.textContent = 'Envoi en cours...';

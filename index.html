@@ -576,11 +576,17 @@
                         </div>
                     </div>
 
-                    <form class="contact-form">
+                    <form class="contact-form" action="mailto:gaetan.simonot@gmail.com" method="post" enctype="text/plain">
                         <div class="form-header">
                             <h3>Demander mon Audit</h3>
                             <p>Remplissez ce formulaire et je vous recontacterai rapidement</p>
                         </div>
+
+                        <!-- Hidden fields for email configuration -->
+                        <input type="hidden" name="_subject" value="Nouvelle demande d'audit - Clarté Patrimoine">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://clarte-patrimoine.netlify.app/merci.html">
+                        <input type="hidden" name="source" value="Formulaire principal">
 
                         <div class="form-row">
                             <div class="form-group">
@@ -709,7 +715,13 @@
             <div class="modal-body">
                 <p class="modal-intro">Découvrez le potentiel d'optimisation de votre patrimoine avec un audit personnalisé sans frais d'honoraires.</p>
 
-                <form class="contact-form-modal" id="contactFormModal">
+                <form class="contact-form-modal" id="contactFormModal" action="https://formsubmit.co/gaetan.simonot@gmail.com" method="POST">
+                    <!-- Hidden fields for email configuration -->
+                    <input type="hidden" name="_subject" value="Nouvelle demande d'audit - Clarté Patrimoine">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://clarte-patrimoine.netlify.app/merci.html">
+                    <input type="hidden" name="source" value="Formulaire modal">
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="modal-name">Nom complet *</label>
