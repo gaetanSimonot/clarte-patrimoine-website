@@ -96,25 +96,38 @@ body {
     }
 }
 
-.logo h1 {
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.logo-text h1 {
     font-family: var(--font-family-heading);
-    font-size: 1.875rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: var(--primary-color);
     letter-spacing: var(--letter-spacing-tight);
-}
-
-.logo h1 a {
-    color: inherit;
-    text-decoration: none;
+    margin: 0;
+    line-height: 1.2;
 }
 
 .logo-subtitle {
     display: block;
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    font-weight: 400;
-    margin-top: -2px;
+    font-size: 0.8rem;
+    color: var(--gold-accent);
+    font-weight: 500;
+    margin-top: 0.125rem;
 }
 
 .nav-menu {
@@ -280,7 +293,7 @@ body {
             rgba(15, 20, 25, 0.35) 50%,
             rgba(0, 0, 0, 0.3) 100%
         ),
-        url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3');
+        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -2310,8 +2323,16 @@ body {
         height: 75px;
     }
 
-    .logo h1 {
-        font-size: 1.3rem;
+    .logo {
+        gap: 0.75rem;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    .logo-text h1 {
+        font-size: 1.2rem;
     }
 
     .hero {
