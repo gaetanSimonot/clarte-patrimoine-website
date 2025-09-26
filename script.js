@@ -72,30 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const originalBtnText = submitBtn.textContent;
 
         contactForm.addEventListener('submit', function(e) {
-            // Basic client-side validation
-            const formData = new FormData(this);
-            const prenom = formData.get('prenom')?.trim();
-            const nom = formData.get('nom')?.trim();
-            const email = formData.get('email')?.trim();
-            const sujet = formData.get('sujet');
-            const message = formData.get('message')?.trim();
-
-            // Check required fields
-            if (!prenom || !nom || !email || !sujet || !message) {
-                e.preventDefault();
-                alert('Veuillez remplir tous les champs obligatoires.');
-                return;
-            }
-
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                e.preventDefault();
-                alert('Veuillez entrer une adresse email valide.');
-                return;
-            }
-
-            // Show loading state and let Netlify handle submission
+            // Show loading state and let FormSubmit.co handle submission
             submitBtn.textContent = 'Envoi en cours...';
             submitBtn.style.opacity = '0.7';
             submitBtn.style.pointerEvents = 'none';
@@ -282,29 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const originalBtnText = submitBtn.textContent;
 
         contactFormModal.addEventListener('submit', function(e) {
-            // Basic client-side validation
-            const formData = new FormData(this);
-            const name = formData.get('name')?.trim();
-            const email = formData.get('email')?.trim();
-            const subject = formData.get('subject');
-            const message = formData.get('message')?.trim();
-
-            // Check required fields
-            if (!name || !email || !subject || !message) {
-                e.preventDefault();
-                alert('Veuillez remplir tous les champs obligatoires.');
-                return;
-            }
-
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                e.preventDefault();
-                alert('Veuillez entrer une adresse email valide.');
-                return;
-            }
-
-            // Show loading state and let Netlify handle submission
+            // Show loading state and let FormSubmit.co handle submission
             submitBtn.textContent = 'Envoi en cours...';
             submitBtn.style.opacity = '0.7';
             submitBtn.style.pointerEvents = 'none';

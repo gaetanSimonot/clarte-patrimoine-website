@@ -576,19 +576,18 @@
                         </div>
                     </div>
 
-                    <form class="contact-form" name="contact-principal" method="POST" data-netlify="true">
+                    <form class="contact-form" action="https://formsubmit.co/gaetan.simonot@gmail.com" method="POST">
                         <div class="form-header">
                             <h3>Demander mon Audit</h3>
                             <p>Remplissez ce formulaire et je vous recontacterai rapidement</p>
                         </div>
 
-                        <!-- Hidden fields for Netlify Forms -->
-                        <input type="hidden" name="form-name" value="contact-principal">
+                        <!-- Hidden fields for FormSubmit.co -->
+                        <input type="hidden" name="_subject" value="Nouvelle demande d'audit - Clarté Patrimoine">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://clarte-patrimoine-website.vercel.app/merci.html">
+                        <input type="hidden" name="_autoresponse" value="Merci pour votre demande d'audit ! J'ai bien reçu votre message et vous recontacterai dans les 24-48h pour organiser notre première consultation. Cordialement, Elodie Le Bian - Clarté Patrimoine">
                         <input type="hidden" name="source" value="Formulaire principal">
-                        <!-- Netlify honeypot field -->
-                        <div style="display: none;">
-                            <input name="bot-field">
-                        </div>
 
                         <div class="form-row">
                             <div class="form-group">
@@ -717,14 +716,13 @@
             <div class="modal-body">
                 <p class="modal-intro">Découvrez le potentiel d'optimisation de votre patrimoine avec un audit personnalisé sans frais d'honoraires.</p>
 
-                <form class="contact-form-modal" id="contactFormModal" name="contact-modal" method="POST" data-netlify="true">
-                    <!-- Hidden fields for Netlify Forms -->
-                    <input type="hidden" name="form-name" value="contact-modal">
+                <form class="contact-form-modal" id="contactFormModal" action="https://formsubmit.co/gaetan.simonot@gmail.com" method="POST">
+                    <!-- Hidden fields for FormSubmit.co -->
+                    <input type="hidden" name="_subject" value="Nouvelle demande d'audit - Clarté Patrimoine">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://clarte-patrimoine-website.vercel.app/merci.html">
+                    <input type="hidden" name="_autoresponse" value="Merci pour votre demande d'audit ! J'ai bien reçu votre message et vous recontacterai dans les 24-48h pour organiser notre première consultation. Cordialement, Elodie Le Bian - Clarté Patrimoine">
                     <input type="hidden" name="source" value="Formulaire modal">
-                    <!-- Netlify honeypot field -->
-                    <div style="display: none;">
-                        <input name="bot-field">
-                    </div>
 
                     <div class="form-row">
                         <div class="form-group">
@@ -765,28 +763,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Hidden forms for Netlify form detection -->
-    <form name="contact-principal" data-netlify="true" style="display: none;">
-        <input name="prenom" type="text">
-        <input name="nom" type="text">
-        <input name="email" type="email">
-        <select name="sujet">
-            <option>Audit de patrimoine</option>
-        </select>
-        <textarea name="message"></textarea>
-        <input name="source" type="hidden">
-    </form>
-
-    <form name="contact-modal" data-netlify="true" style="display: none;">
-        <input name="name" type="text">
-        <input name="email" type="email">
-        <select name="subject">
-            <option>Audit de patrimoine</option>
-        </select>
-        <textarea name="message"></textarea>
-        <input name="source" type="hidden">
-    </form>
 
     <script src="script.js"></script>
 </body>
