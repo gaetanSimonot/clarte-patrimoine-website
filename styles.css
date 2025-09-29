@@ -96,6 +96,30 @@ body {
     }
 }
 
+/* Espacement pour écrans moyens - éviter collision logo/menu */
+@media (max-width: 1199px) and (min-width: 769px) {
+    .nav-menu {
+        margin-left: 2rem;
+        gap: 1.5rem;
+    }
+
+    .nav-container {
+        gap: 1rem;
+    }
+}
+
+/* Espacement serré pour petits écrans desktop */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .nav-menu {
+        gap: 1rem;
+        margin-left: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+}
+
 .logo {
     display: flex;
     align-items: center;
