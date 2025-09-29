@@ -1,0 +1,8 @@
+{
+  "name": "clarte-patrimoine-website",
+  "version": "1.0.0",
+  "description": "Site web Clarté Patrimoine - Elodie Le Bian",
+  "dependencies": {
+    "resend": "^2.0.0"
+  }
+}
