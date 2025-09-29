@@ -3351,6 +3351,120 @@ body {
     }
 }
 
+/* Testimonial Modal Styles */
+.testimonial-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+}
+
+.testimonial-modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 0;
+    border: none;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.testimonial-modal-header {
+    padding: 20px 30px 0;
+    text-align: right;
+}
+
+.testimonial-modal-close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.testimonial-modal-close:hover,
+.testimonial-modal-close:focus {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.testimonial-modal-body {
+    padding: 20px 30px 40px;
+}
+
+.testimonial-quote-large {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.testimonial-quote-large i {
+    font-size: 3rem;
+    color: var(--primary);
+    opacity: 0.3;
+}
+
+.testimonial-modal-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    font-style: italic;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.testimonial-modal-author {
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.testimonial-modal-author h4 {
+    color: var(--primary);
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+}
+
+.testimonial-modal-author span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Read More Button */
+.read-more-btn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    margin-left: 5px;
+    transition: color 0.3s ease;
+}
+
+.read-more-btn:hover {
+    color: var(--primary-dark);
+}
+
 /* Mobile Responsive FAQ */
 @media (max-width: 768px) {
     .faq-hero {
