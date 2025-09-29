@@ -838,7 +838,9 @@
                 const result = await response.json();
 
                 if (response.ok) {
-                    return { success: true, message: 'Votre message a été envoyé avec succès ! Vous recevrez une confirmation par email.' };
+                    // Redirection vers la page de remerciement
+                    window.location.href = '/merci.html';
+                    return { success: true, redirect: true };
                 } else {
                     return { success: false, message: result.error || 'Une erreur est survenue lors de l\'envoi.' };
                 }
@@ -891,6 +893,11 @@
 
             const result = await handleFormSubmit(formData, 'Formulaire principal');
 
+            // Si redirection, on n'a pas besoin de gérer l'UI car on quitte la page
+            if (result.redirect) {
+                return;
+            }
+
             toggleSubmitButton('submitBtn', false);
             showFormMessage('formMessage', result.message, result.success);
 
@@ -915,6 +922,11 @@
             toggleSubmitButton('modalSubmitBtn', true);
 
             const result = await handleFormSubmit(formData, 'Formulaire modal');
+
+            // Si redirection, on n'a pas besoin de gérer l'UI car on quitte la page
+            if (result.redirect) {
+                return;
+            }
 
             toggleSubmitButton('modalSubmitBtn', false);
             showFormMessage('modalFormMessage', result.message, result.success);
