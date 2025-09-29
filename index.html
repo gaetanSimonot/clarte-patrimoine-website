@@ -11,7 +11,7 @@
     <meta property="og:title" content="Clarté Patrimoine - Conseil en Gestion de Patrimoine">
     <meta property="og:description" content="Gérez votre patrimoine en toute clarté et sécurité avec une conseillère financière certifiée FINMA">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.clarte-patrimoine.ch">
+    <meta property="og:url" content="https://www.lebian-clartepatrimoine.ch">
 
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
@@ -577,7 +577,7 @@
                         </div>
                     </div>
 
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" onsubmit="return false;">
                         <div class="form-header">
                             <h3>Demander mon Audit</h3>
                             <p>Remplissez ce formulaire et je vous recontacterai rapidement</p>
@@ -714,7 +714,7 @@
             <div class="modal-body">
                 <p class="modal-intro">Découvrez le potentiel d'optimisation de votre patrimoine avec un audit personnalisé sans frais d'honoraires.</p>
 
-                <form class="contact-form-modal" id="contactFormModal">
+                <form class="contact-form-modal" id="contactFormModal" onsubmit="return false;">
                     <!-- Message de statut -->
                     <div id="modalFormMessage" class="form-message" style="display: none;"></div>
 
@@ -879,6 +879,7 @@
         // Formulaire principal
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+            console.log('Formulaire principal soumis via JavaScript - Resend API');
 
             const formData = {
                 prenom: document.getElementById('prenom').value,
@@ -909,6 +910,7 @@
         // Formulaire modal
         document.getElementById('contactFormModal').addEventListener('submit', async function(e) {
             e.preventDefault();
+            console.log('Formulaire modal soumis via JavaScript - Resend API');
 
             const formData = {
                 prenom: document.getElementById('modal-name').value.split(' ')[0] || '',

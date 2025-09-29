@@ -140,7 +140,7 @@ export default async function handler(req, res) {
 
             <p style="color: #666; line-height: 1.6;">
               En attendant notre échange, n'hésitez pas à consulter ma page
-              <a href="https://clarte-patrimoine-website.vercel.app/faq.html" style="color: #2c5aa0;">Questions Fréquentes</a>
+              <a href="https://www.lebian-clartepatrimoine.ch/faq.html" style="color: #2c5aa0;">Questions Fréquentes</a>
               qui pourrait répondre à certaines de vos interrogations.
             </p>
 
