@@ -33,6 +33,6 @@ Site déployé sur Vercel avec intégration continue depuis GitHub.
 ## Contact
 
 Elodie Le Bian - Conseillère Financière Certifiée FINMA
-- Email: elodie@clarte-patrimoine.ch
+- Email: elodie@lebian-clartepatrimoine.ch
 - Téléphone: +41 79 744 08 86
 - Adresse: Rue de Chantepoulet 10, Genève, Suisse
